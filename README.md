@@ -99,4 +99,8 @@ AGROSENSE/
 
 ---
 
+##👥Contributers
+-@Meenal56(https://github.com/meenal56)
+-@Shweta-78(https://github.com/Shweta-78)
+
 Built as an IoT + Web integration project.
