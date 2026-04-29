@@ -20,7 +20,7 @@ It uses an ESP32 to send sensor data to a Flask server, which stores it in SQLit
 
 ## 🧠 Tech Stack
 
-- Hardware: ESP32, DHT11, Soil Moisture Sensor, LDR
+- Hardware: ESP32, DHT11, Soil Moisture Sensor, LDR,Breadboard
 - Backend: Flask (Python)
 - Database: SQLite
 - Frontend: HTML, CSS, JavaScript
@@ -28,19 +28,27 @@ It uses an ESP32 to send sensor data to a Flask server, which stores it in SQLit
 
 ---
 
-## 📁 Project Structure
+##🔌 Circuit Connections
+🌡️ DHT11 (Temperature + Humidity)
+-VCC → 3.3V
+-GND → GND
+-DATA → GPIO 4
+-10kΩ pull-up resistor between DATA and VCC
 
-AGROSENSE/
-├── arduino_code/
-│   └── AGROSENSE/
-│       └── AGROSENSE.ino
-├── flask_code/
-│   └── server.py
-├── docs/
-│   ├── dashboardimg.jpeg
-│   └── dbbrowserimg.jpeg
-├── README.md
-└── .gitignore
+🌱 Soil Moisture Sensor
+-VCC → 3.3V
+-GND → GND
+-AO → GPIO 32
+
+🌞 LDR (Voltage Divider Setup)
+-One side → 3.3V
+-Other side → GPIO 34
+-10kΩ resistor from GPIO 34 → GND
+
+⚡ Pin Configuration
+-DHT11       → GPIO 4
+-Soil Sensor → GPIO 32
+-LDR         → GPIO 34
 
 ---
 
