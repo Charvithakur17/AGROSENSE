@@ -28,7 +28,8 @@ It uses an ESP32 to send sensor data to a Flask server, which stores it in SQLit
 
 ---
 
-🔌 Circuit Connections
+#🔌<b>Circuit Connections<b>
+
 🌡️ DHT11 (Temperature + Humidity)
 -VCC → 3.3V
 -GND → GND
