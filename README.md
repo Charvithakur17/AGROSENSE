@@ -76,17 +76,72 @@ It uses an ESP32 to send sensor data to a Flask server, which stores it in SQLit
 
 ## 🛠️ How to Run
 
-1. Install Flask  
-   pip install flask  
+🔗 ESP32 ↔ Flask Communication
 
-2. Run server  
-   python flask_code/server.py  
+The ESP32 sends sensor data to the Flask server using HTTP POST requests over WiFi.
 
-3. Open browser  
-   http://localhost:5000  
+📡 Setup Steps
 
-4. Upload Arduino code to ESP32  
-   (Add your WiFi + server IP first)
+1. Connect ESP32 to the same WiFi network as your computer
+2. In Arduino code, update:
+
+const char* ssid = "YOUR_WIFI_NAME";
+const char* password = "YOUR_WIFI_PASSWORD";
+const char* serverName = "http://YOUR_PC_IP:5000/data";
+
+3. Find your PC's IP address:
+
+- Windows: "ipconfig"
+- Look for IPv4 address (e.g., 192.168.1.5)
+
+4. Upload the code to ESP32
+
+---
+
+🔄 Data Flow
+
+ESP32 → HTTP POST → Flask API → SQLite Database
+
+---
+
+🗄️ SQLite Database Setup
+
+SQLite is automatically created when the Flask server runs.
+
+📌 How it works
+
+- On first run, Flask creates a ".db" file (e.g., "data.db")
+- Sensor data is stored in a table inside this file
+
+▶️ Run Flask Server
+
+pip install flask
+python flask_code/server.py
+
+If implemented correctly, you should see:
+
+- Server running on "http://0.0.0.0:5000"
+- Incoming POST requests in terminal
+
+---
+
+🔍 Verify Data Storage
+
+You can check the database using:
+
+sqlite3 data.db
+
+Then:
+
+SELECT * FROM sensor_data;
+
+---
+
+⚠️ Important Notes
+
+- ESP32 and server must be on the same network
+- Use PC IP, not "localhost" in Arduino code
+- Ensure endpoint "/data" matches Flask route
 
 ---
 
